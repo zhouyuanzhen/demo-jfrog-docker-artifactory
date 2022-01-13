@@ -13,14 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag zhouyuanzhen.jfrog.io/registry/caddydemo:$(date +%s)
-      
-    - name: publish to artifactory
-      uses: advancedcsg-open/action-jfrog-cli@master
+    - name: Login to JFrog
+      uses: docker/login-action@v1
       with:
-        url: 'https://zhouyuanzhen.jfrog.io/'
-        credentials type: 'apikey'
-        apikey: ${{ secrets.JFROG_APIKEY }}
-        args: u "dist/*" "/mu/repo/path/" --recursive=true --build-name=zhouyuanzhen.jfrog.io/registry/caddydemo
+        registry: 'zhouyuanzhen.jfrog.io'
+        access-token: ${{ secrets.JFROG_APIKEY }}
+
+    - name: Checkout project
+      uses: actions/checkout@v2
+    
+    - name: Build and push 🐳
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: 'zhouyuanzhen.jfrog.io/registry/caddydemo:latest'
