@@ -7,10 +7,16 @@ build:
 
 run:
 	@echo "Run latest docker in local now (port: 8080):"
-	docker run --rm -p 8080:80 --name localcaddy local-caddy
+	docker run -d --rm -p 8080:80 --name localcaddy local-caddy
+	@open http://localhost:8080/
 
-clean:
+stop:
 	@echo "Stop the docker container ..."
 	docker stop localcaddy
+
+delete_image:
 	@echo "Delete the docker image ..."
 	docker rmi local-caddy:latest
+
+clean: stop delete_image
+	@echo "Cleaned ..."
