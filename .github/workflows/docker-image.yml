@@ -16,8 +16,8 @@ jobs:
     - name: Login to JFrog
       uses: docker/login-action@v1
       with:
-        registry: 'zhouyuanzhen.jfrog.io'
-        username: 'joe@dalmait.com'
+        registry: zhouyuanzhen.jfrog.io
+        username: joe@dalmait.com
         password: ${{ secrets.JFROG_PW }}
 
     - name: Checkout project
@@ -28,4 +28,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: 'zhouyuanzhen.jfrog.io/registry/caddydemo:latest'
+        tags: zhouyuanzhen.jfrog.io/registry/caddydemo:latest
