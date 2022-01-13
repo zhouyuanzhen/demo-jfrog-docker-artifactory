@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Debug
-      run: echo ${{ secrets.JFROG_USERNAME }}
+      run: 'echo ${{ secrets.JFROG_USERNAME }}'
     
     - name: Login to JFrog
       uses: docker/login-action@v1
