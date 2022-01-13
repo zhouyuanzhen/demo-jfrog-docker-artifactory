@@ -1,4 +1,7 @@
 # demo-jfrog-docker-artifactory
+
+[![Docker Caddy Image CI](https://github.com/zhouyuanzhen/demo-jfrog-docker-artifactory/actions/workflows/docker-image.yml/badge.svg)](https://github.com/zhouyuanzhen/demo-jfrog-docker-artifactory/actions/workflows/docker-image.yml)
+
 A demo for Jfrog Docker Artifactory integration. When new commit be pushed or merged to main branch will trigger the GitHub Action workflow which will build the latest docker image and push to JFrog Artifactory registry.
 
 ## QuickStart
