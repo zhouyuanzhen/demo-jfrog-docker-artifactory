@@ -18,7 +18,7 @@ jobs:
       with:
         registry: zhouyuanzhen.jfrog.io
         username: joe@dalmait.com
-        password: ${{ secrets.JFROG_PW }}
+        password: ${{ secrets.JFROG_APIKEY }}
 
     - name: Checkout project
       uses: actions/checkout@v2
