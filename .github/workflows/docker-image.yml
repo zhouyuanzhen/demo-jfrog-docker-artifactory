@@ -16,3 +16,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag zhouyuanzhen.jfrog.io/registry/caddydemo:$(date +%s)
+      
+    - name: publish to artifactory
+      uses: advancedcsg-open/action-jfrog-cli@master
+      with:
+        url: 'https://zhouyuanzhen.jfrog.io/'
+        credentials type: 'apikey'
+        apikey: ${{ secrets.JFROG_APIKEY }}
+        args: u "dist/*" "/registry/" --recursive=true --build-name=zhouyuanzhen.jfrog.io/registry/caddydemo
