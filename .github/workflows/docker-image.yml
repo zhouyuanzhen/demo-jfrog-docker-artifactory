@@ -23,4 +23,4 @@ jobs:
         url: 'https://zhouyuanzhen.jfrog.io/'
         credentials type: 'apikey'
         apikey: ${{ secrets.JFROG_APIKEY }}
-        args: u "dist/*" "/registry/" --recursive=true --build-name=zhouyuanzhen.jfrog.io/registry/caddydemo
+        args: u "dist/*" "/mu/repo/path/" --recursive=true --build-name=zhouyuanzhen.jfrog.io/registry/caddydemo
